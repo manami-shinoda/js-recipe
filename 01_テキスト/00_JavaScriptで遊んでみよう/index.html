@@ -7,16 +7,33 @@
     <title>JavaScriptで遊んでみよう</title>
   </head>
   <body>
+    <! ---   html   --->
     <div id="display">ここに何かが表示される</div>
+    <!--- displayといIdのついた要素 --->
     <button id="button">クリック！</button>
 
+    <! ---   javascript   --->
     <script>
       // カウンターアプリに発展させてみましょう
 
+      //表示を変えるコード
+      //buttonは最初に宣言した定数
       const display = document.getElementById("display")
+      //documentからdisplayというIdのついた要素(Element)を取得
+      //document.getElementById("display") で、 id 属性をもとに HTML 上の要素を取得できる。
+
       const button = document.getElementById("button")
+      //上の2行が要素取得のコード
+
+      let count = 0
+      //letで宣言した名前は値を変化させられる
+
       button.onclick = function() {
-        display.textContent = "はやくはじめようぜ！"
+        count += 1
+        display.textContent = count
+
+        //display.textContent = "クリックされた!"
+        //display.textContentは<display>の中身
       }
     </script>
   </body>
