@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Week2メモアプリ</title>
+  </head>
+  <body>
+    <input type="text" id="memo-input" />
+    <button id="add-button">追加</button>
+    <div id="memo-container"></div>
+
+    <script>
+      const memoInput = document.getElementById("memo-input")
+      const addButton = document.getElementById("add-button")
+      const memoContainer = document.getElementById("memo-container")
+
+      let memos = []
+
+      addButton.onclick = function() {
+        const text = memoInput.value
+        memos.push(text)
+
+        memoContainer.innerHTML = ""
+
+        for (let i = 0; i < memos.length; i++) {
+          const memo = document.createElement("div")
+          memo.textContent = memos[i]
+          memoContainer.append(memo)
+        }
+      }
+    </script>
+  </body>
+</html>
+<!-- 
+みさ_赤
+まなみん_青 
+-->
