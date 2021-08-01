@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>銀行アプリ</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section id="ATMapp">
+  
+        <h1>入力画面</h1>
+        <input type="number" v-model.number="inputMoney">
+        <div>入力額: {{inputMoney}} 円</div>
+        <button v-on:click="inBalance">入金</button>
+        <button v-on:click="outBalance" v-bind:disabled="inputMoney>balance">出金</button>
+
+        <h1>口座残高</h1>
+        <div>残高: {{balance}} 円</div> <!--残高表示-->
+        <h1>取引記録</h1>
+
+        <div v-for="log in logs">
+          <div>日付: {{log.date}}</div>
+          <div>操作: {{log.type}}</div>
+          <div>金額: {{log.money}}</div>
+      </div>
+
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+<script>
+  new Vue({
+    el: "#ATMapp",
+      data: {
+        inputMoney: 0,
+        balance: 0,
+        i: 0,
+        
+        logs:[],
+        
+      },
+      methods: {
+      inBalance: function(){
+        this.balance += this.inputMoney,
+        this.logs.push({
+        date: new Date(),
+        type: "入金",
+        money: this.inputMoney,
+        })
+        this.inputMoney=0
+      },
+
+      outBalance: function(){
+        this.balance -= this.inputMoney,
+        this.logs.push({
+        date: new Date(),
+        type: "出金",
+        money: this.inputMoney,
+        })
+        this.inputMoney=0
+      }
+    }
+  })
+</script>
+  
+
+    
+</html>
